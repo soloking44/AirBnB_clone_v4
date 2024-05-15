@@ -148,7 +148,7 @@ Authors
 Alexa Orrico - Github / Twitter
 Jennifer Huang - Github / Twitter
 Asakwonye Collins onyekachi <solop8483@gmail.com>
-Lynda Ndidiamaka <lilianlynda22@gmail.com>
+Umeka Lynda Ndidiamaka <lilianlynda22@gmail.com>
 
 License
 Public Domain. No copy write protection.
