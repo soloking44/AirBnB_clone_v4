@@ -1,11 +1,10 @@
 #!/usr/bin/python3
 """
-A Flask App to integrate the AirBnB static HTML Template
+this is Flask App
 """
 from flask import Flask, render_template, url_for
 from models import storage
-import uuid
-
+import uuid;
 
 # flask setup
 app = Flask(__name__)
@@ -24,10 +23,10 @@ def teardown_db(exception):
     storage.close()
 
 
-@app.route('/2-hbnb/')
+@app.route('/2-hbnb')
 def hbnb_filters(the_id=None):
     """
-    It handle request to custom template of states, cities & amentities
+    handles request to custom template with states, cities & amentities
     """
     state_objs = storage.all('State').values()
     states = dict([state.name, state] for state in state_objs)
@@ -35,13 +34,29 @@ def hbnb_filters(the_id=None):
     places = storage.all('Place').values()
     users = dict([user.id, "{} {}".format(user.first_name, user.last_name)]
                  for user in storage.all('User').values())
-    cache_id = uuid.uuid4()
     return render_template('2-hbnb.html',
+                           cache_id=uuid.uuid4(),
                            states=states,
                            amens=amens,
                            places=places,
-                           users=users,
-                           cache_id=cache_id)
+                           users=users)
+@app.route('/')
+def hbnb_filters1(the_id=None):
+    """
+    handles request to custom template with states, cities & amentities
+    """
+    state_objs = storage.all('State').values()
+    states = dict([state.name, state] for state in state_objs)
+    amens = storage.all('Amenity').values()
+    places = storage.all('Place').values()
+    users = dict([user.id, "{} {}".format(user.first_name, user.last_name)]
+                 for user in storage.all('User').values())
+    return render_template('2-hbnb.html',
+                           cache_id=uuid.uuid4(),
+                           states=states,
+                           amens=amens,
+                           places=places,
+                           users=users)
 
 if __name__ == "__main__":
     """
